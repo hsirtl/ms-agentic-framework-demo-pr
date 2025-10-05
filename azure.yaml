@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: ms-agentic-framework-demo
+metadata:
+  template: ms-agentic-framework-demo-pr@0.0.1-beta
+
+# Infra configuration
+infra:
+  provider: bicep
+  path: infra
+  module: main
+
+# Monitoring and hooks
+hooks:
+  postprovision:
+    shell: pwsh
+    run: |
+      echo "Azure AI Foundry resources have been provisioned successfully!"
+      echo "You can now access your AI Foundry hub and project in the Azure portal."
