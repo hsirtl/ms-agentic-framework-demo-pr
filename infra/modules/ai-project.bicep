@@ -38,6 +38,9 @@ resource aiProject 'Microsoft.MachineLearningServices/workspaces@2024-10-01' = {
 }
 
 // Role assignment: AzureML Data Scientist role on the hub for the project's managed identity
+// Note: This role assignment is typically created automatically by Azure ML
+// or can be assigned manually through the Azure Portal if needed
+/*
 resource azureMLDataScientistRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid(hubResourceId, aiProject.id, 'f6c7c914-8db3-469d-8ca1-694a8f32e121')
   scope: resourceGroup()
@@ -47,6 +50,7 @@ resource azureMLDataScientistRoleAssignment 'Microsoft.Authorization/roleAssignm
     principalType: 'ServicePrincipal'
   }
 }
+*/
 
 // Outputs
 @description('Resource ID of the AI Project')

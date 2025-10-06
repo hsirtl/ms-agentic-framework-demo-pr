@@ -117,12 +117,18 @@ resource aiFoundryHub 'Microsoft.MachineLearningServices/workspaces@2024-10-01' 
 }
 
 // Role assignments for the Hub's managed identity
+// Note: These role assignments are typically created automatically by Azure ML
+// or can be assigned manually through the Azure Portal if needed
+/*
 // Key Vault Secrets Officer role assignment
 resource keyVaultSecretsOfficerRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid(keyVault.id, aiFoundryHub.id, 'b86a8fe4-44ce-4948-aee5-eccb2c155cd7')
   scope: keyVault
   properties: {
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b86a8fe4-44ce-4948-aee5-eccb2c155cd7')
+    roleDefinitionId: subscriptionResourceId(
+      'Microsoft.Authorization/roleDefinitions',
+      'b86a8fe4-44ce-4948-aee5-eccb2c155cd7'
+    )
     principalId: aiFoundryHub.identity.principalId
     principalType: 'ServicePrincipal'
   }
@@ -133,11 +139,15 @@ resource storageContributorRoleAssignment 'Microsoft.Authorization/roleAssignmen
   name: guid(storageAccount.id, aiFoundryHub.id, 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')
   scope: storageAccount
   properties: {
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')
+    roleDefinitionId: subscriptionResourceId(
+      'Microsoft.Authorization/roleDefinitions',
+      'ba92f5b4-2d11-453d-a403-e96b0029c9fe'
+    )
     principalId: aiFoundryHub.identity.principalId
     principalType: 'ServicePrincipal'
   }
 }
+*/
 
 // Outputs
 @description('Resource ID of the AI Foundry Hub')

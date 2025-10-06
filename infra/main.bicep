@@ -15,8 +15,8 @@ param tags object = {}
 // Variables for resource naming
 var hubName = '${projectName}-hub-${environmentSuffix}'
 var aiProjectName = '${projectName}-project-${environmentSuffix}'
-var keyVaultName = '${projectName}-kv-${environmentSuffix}'
-var storageAccountName = '${replace(projectName, '-', '')}sa${environmentSuffix}'
+var keyVaultName = '${take(replace(projectName, '-', ''), 10)}kv${take(uniqueString(resourceGroup().id), 10)}'
+var storageAccountName = '${take(replace(projectName, '-', ''), 15)}sa${take(uniqueString(resourceGroup().id), 6)}'
 var applicationInsightsName = '${projectName}-ai-${environmentSuffix}'
 var logAnalyticsWorkspaceName = '${projectName}-law-${environmentSuffix}'
 
